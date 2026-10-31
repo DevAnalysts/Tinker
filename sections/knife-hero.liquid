@@ -1,0 +1,144 @@
+{% comment %}
+  Section: Knife Hero Banner
+  Hero section featuring obsidian blade photography, Damascus water text gradient, and forge trust metrics.
+{% endcomment %}
+
+<section class="knife-hero-section">
+  <!-- Background Image -->
+  {% if section.settings.image != blank %}
+    <img
+      src="{{ section.settings.image | image_url: width: 1920 }}"
+      alt="Hand-forged Damascus steel knife resting on obsidian"
+      class="knife-hero-bg"
+      width="1920"
+      height="912"
+      loading="eager"
+    />
+  {% else %}
+    <img
+      src="{{ 'knife-hero-obsidian.jpg' | asset_url }}"
+      alt="Hand-forged Damascus steel knife resting on obsidian"
+      class="knife-hero-bg"
+      width="1920"
+      height="912"
+      loading="eager"
+    />
+  {% endif %}
+
+  <!-- Reading Gradients -->
+  <div class="knife-hero-gradient-x"></div>
+  <div class="knife-hero-gradient-y"></div>
+
+  <div class="knife-hero-content">
+    <div class="reveal">
+      <p class="eyebrow animate-ember" style="display:flex; align-items:center; gap:0.75rem; color:var(--primary);">
+        <span class="hairline" style="width:2.5rem;"></span>
+        <span>{{ section.settings.eyebrow | default: 'Hand-Forged in California · Atelier Mode' }}</span>
+      </p>
+    </div>
+
+    <div class="reveal" style="transition-delay: 100ms;">
+      <h1 class="knife-hero-title">
+        {{ section.settings.title_line1 | default: 'Steel That' }}
+        <span class="damascus-text" style="display:block; font-weight:600;">
+          {{ section.settings.title_line2 | default: 'Remembers Water' }}
+        </span>
+      </h1>
+    </div>
+
+    <div class="reveal" style="transition-delay: 200ms;">
+      <p class="knife-hero-copy">
+        {{ section.settings.subheading | default: 'Every blade leaves our California forge with hundreds of folded layers of high-carbon Damascus steel, an individually contoured natural handle, and an edge proven at the anvil.' }}
+      </p>
+    </div>
+
+    <div class="reveal" style="transition-delay: 300ms;">
+      <div class="knife-btn-group">
+        <a href="#catalog-section" class="knife-btn-primary">
+          <span>{{ section.settings.cta_primary_label | default: 'Shop the Forge' }}</span>
+          <span>&rarr;</span>
+        </a>
+        <a href="#metallurgy-section" class="knife-btn-outline">
+          <span>{{ section.settings.cta_secondary_label | default: 'The Damascus Metallurgy' }}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Trust Metrics Grid -->
+    <div class="reveal" style="transition-delay: 400ms;">
+      <div class="knife-trust-grid">
+        <div class="knife-trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>1,700+ verified reviews</span>
+        </div>
+        <div class="knife-trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          <span>Ships fast from California</span>
+        </div>
+        <div class="knife-trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>30-day returns</span>
+        </div>
+        <div class="knife-trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          <span>100% hand-forged</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Knife Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Hand-Forged in California · Atelier Mode"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Headline Line 1",
+      "default": "Steel That"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Headline Line 2 (Damascus Gradient)",
+      "default": "Remembers Water"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every blade leaves our California forge with hundreds of folded layers of high-carbon Damascus steel, an individually contoured natural handle, and an edge proven at the anvil."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary Button Label",
+      "default": "Shop the Forge"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "The Damascus Metallurgy"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Hero Banner"
+    }
+  ]
+}
+{% endschema %}
+

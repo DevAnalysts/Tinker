@@ -1,0 +1,122 @@
+{% comment %}
+  Section: Knife Header
+  Sticky frosted navigation with brand atelier mark, category navigation, search trigger, cart badge, and live theme switch.
+{% endcomment %}
+
+<header class="knife-site-header">
+  <div class="knife-header-inner">
+    <!-- Brand Logo -->
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <button
+        id="knife-mobile-menu-btn"
+        type="button"
+        class="knife-icon-btn"
+        style="display:flex; border:none; background:none;"
+        class="lg-hidden"
+        aria-label="Toggle navigation menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+
+      <a href="{{ routes.root_url }}" class="knife-brand-logo">
+        <div class="knife-brand-flame-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        </div>
+        <div class="knife-brand-text">
+          <span class="knife-brand-title">{{ section.settings.brand_title | default: 'WHITE HILLS' }}</span>
+          <span class="knife-brand-subtitle">{{ section.settings.brand_subtitle | default: 'Damascus Atelier' }}</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Center Navigation Links -->
+    <nav class="knife-nav-links" aria-label="Main Navigation">
+      <a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="pocket">Pocket Knives</a>
+      <a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="hunting">Hunting Knives</a>
+      <a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="chef">Chef Knives</a>
+      <a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="axes">Hand-Forged Axes</a>
+      <a href="#metallurgy-section" class="knife-nav-link">Metallurgy Guide</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="knife-header-actions">
+      <!-- Multi-Theme Switcher -->
+      {% render 'knife-theme-switcher' %}
+
+      <!-- Search Trigger -->
+      <button
+        type="button"
+        data-knife-open-search
+        class="knife-icon-btn"
+        aria-label="Search Damascus blades"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+
+      <!-- Cart Trigger -->
+      <button
+        type="button"
+        data-knife-open-cart
+        class="knife-icon-btn"
+        aria-label="Open Cart Ledger"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span data-knife-cart-count class="knife-cart-badge" style="display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %};">
+          {{ cart.item_count }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="knife-mobile-menu-drawer" style="display:none; padding:1.5rem; background:var(--card); border-top:1px solid var(--border);">
+    <p class="eyebrow" style="color:var(--primary); font-size:0.6rem; margin-bottom:1rem;">Atelier Collections</p>
+    <div style="display:flex; flex-direction:column; gap:0.75rem;">
+      <a href="#catalog-section" style="font-family:var(--font-display); font-size:1.125rem; color:var(--foreground); text-decoration:none;" onclick="document.getElementById('knife-mobile-menu-drawer').style.display='none';">Pocket Knives</a>
+      <a href="#catalog-section" style="font-family:var(--font-display); font-size:1.125rem; color:var(--foreground); text-decoration:none;" onclick="document.getElementById('knife-mobile-menu-drawer').style.display='none';">Hunting Knives</a>
+      <a href="#catalog-section" style="font-family:var(--font-display); font-size:1.125rem; color:var(--foreground); text-decoration:none;" onclick="document.getElementById('knife-mobile-menu-drawer').style.display='none';">Chef Knives</a>
+      <a href="#catalog-section" style="font-family:var(--font-display); font-size:1.125rem; color:var(--foreground); text-decoration:none;" onclick="document.getElementById('knife-mobile-menu-drawer').style.display='none';">Hand-Forged Axes</a>
+      <a href="#metallurgy-section" style="font-family:var(--font-display); font-size:1.125rem; color:var(--foreground); text-decoration:none;" onclick="document.getElementById('knife-mobile-menu-drawer').style.display='none';">Metallurgy Guide</a>
+    </div>
+    <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:0.75rem; color:var(--muted-foreground);">
+      <span>California Dispatch</span>
+      <span style="color:var(--primary); font-weight:600;">100% Hand-Forged</span>
+    </div>
+  </div>
+</header>
+
+<style>
+  @media (min-width: 1024px) {
+    #knife-mobile-menu-btn {
+      display: none !important;
+    }
+  }
+  #knife-mobile-menu-drawer.is-open {
+    display: block !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Knife Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_title",
+      "label": "Brand Title",
+      "default": "WHITE HILLS"
+    },
+    {
+      "type": "text",
+      "id": "brand_subtitle",
+      "label": "Brand Subtitle",
+      "default": "Damascus Atelier"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Header"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,112 @@
+{% comment %}
+  Section: Knife Atelier Story
+  The 3-stage forge story with workshop photography and numbered ember badges.
+{% endcomment %}
+
+<section class="knife-container" style="padding-top:6rem; padding-bottom:6rem;">
+  <div class="knife-story-grid">
+    <!-- Image with overlay -->
+    <div class="knife-story-image-wrap reveal">
+      <img
+        src="{{ 'knife-atelier-forge.jpg' | asset_url }}"
+        alt="The forge inside the White Hills atelier"
+        loading="lazy"
+        width="1024"
+        height="768"
+      />
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);"></div>
+      <p class="eyebrow" style="position:absolute; bottom:1.5rem; left:1.5rem; color:var(--primary); margin:0;">
+        California Workshop · Hand-Forged Daily
+      </p>
+    </div>
+
+    <!-- Craftsmanship Text & Steps -->
+    <div class="reveal" style="transition-delay: 100ms;">
+      <p class="eyebrow" style="display:flex; align-items:center; gap:0.75rem; color:var(--primary);">
+        <span class="hairline" style="width:2.5rem;"></span>
+        <span>{{ section.settings.eyebrow | default: 'The Craftsmanship' }}</span>
+      </p>
+
+      <h2 class="font-display" style="font-size:2.5rem; font-weight:500; margin:1rem 0 1.25rem 0; color:var(--foreground); line-height:1.15;">
+        {{ section.settings.title | default: 'Forged Slow, Carried Forever' }}
+      </h2>
+
+      <p style="font-size:1.0625rem; font-weight:300; line-height:1.7; color:var(--muted-foreground); margin:0 0 2rem 0;">
+        {{ section.settings.copy | default: 'A White Hills blade is not stamped from rolled industrial sheet. It is folded, hammered, cryogenic quenched, and acid-etched until the steel reveals the ancient water pattern Damascus was revered for.' }}
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:1.75rem;">
+        <!-- Step I -->
+        <div class="knife-craft-step">
+          <span class="knife-step-badge">I</span>
+          <div>
+            <h3 class="font-display" style="font-size:1.125rem; font-weight:500; color:var(--foreground); margin:0 0 0.25rem 0;">
+              The Layered Billet
+            </h3>
+            <p style="font-size:0.875rem; font-weight:300; line-height:1.6; color:var(--muted-foreground); margin:0;">
+              Hundreds of alternating layers of 1095 high-carbon and 15N20 nickel alloy steel, forge-welded by hand until the metallurgical water pattern lives throughout the core.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step II -->
+        <div class="knife-craft-step">
+          <span class="knife-step-badge">II</span>
+          <div>
+            <h3 class="font-display" style="font-size:1.125rem; font-weight:500; color:var(--foreground); margin:0 0 0.25rem 0;">
+              The Cryo Edge
+            </h3>
+            <p style="font-size:0.875rem; font-weight:300; line-height:1.6; color:var(--muted-foreground); margin:0;">
+              Each blade is hammer-forged, precision ground, cryogenic quenched to 58–60 HRC, and honed by master cutlers to a hair-splitting working bevel.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step III -->
+        <div class="knife-craft-step">
+          <span class="knife-step-badge">III</span>
+          <div>
+            <h3 class="font-display" style="font-size:1.125rem; font-weight:500; color:var(--foreground); margin:0 0 0.25rem 0;">
+              Natural Handle Marriage
+            </h3>
+            <p style="font-size:0.875rem; font-weight:300; line-height:1.6; color:var(--muted-foreground); margin:0;">
+              Stag antler, natural camel bone, stabilized exotic burls, and hand-tooled full-grain cowhide sheaths — fitted individually to every blade.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Knife Atelier Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Craftsmanship"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Forged Slow, Carried Forever"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Section Copy",
+      "default": "A White Hills blade is not stamped from rolled industrial sheet. It is folded, hammered, cryogenic quenched, and acid-etched until the steel reveals the ancient water pattern Damascus was revered for."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Atelier Story"
+    }
+  ]
+}
+{% endschema %}
+

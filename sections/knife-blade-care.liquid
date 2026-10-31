@@ -1,0 +1,81 @@
+{% comment %}
+  Section: Knife Blade Care
+  The Damascus Steel Care Protocol with 3 heirloom guidance cards.
+{% endcomment %}
+
+<section style="background-color:rgba(var(--primary-rgb),0.02); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding-top:5rem; padding-bottom:5rem;">
+  <div class="knife-container">
+    <div class="knife-section-heading reveal">
+      <p class="eyebrow" style="color:var(--primary);">{{ section.settings.eyebrow | default: 'Heirloom Longevity' }}</p>
+      <h2>{{ section.settings.title | default: 'The Damascus Steel Care Protocol' }}</h2>
+      <p>{{ section.settings.copy | default: 'High-carbon folded steel rewards simple mindful care with generations of razor sharpness.' }}</p>
+    </div>
+
+    <div class="knife-care-grid">
+      <!-- Tip 1 -->
+      <div class="knife-care-card reveal">
+        <span class="glyph">❖</span>
+        <h3 class="font-display" style="font-size:1.125rem; font-weight:500; color:var(--foreground); margin:0 0 0.5rem 0;">
+          Keep Dry & Oiled
+        </h3>
+        <p style="font-size:0.8125rem; font-weight:300; line-height:1.6; color:var(--muted-foreground); margin:0;">
+          Wipe clean after use and apply a drop of food-safe mineral oil or camellia oil to the blade to preserve the etched carbon contrast.
+        </p>
+      </div>
+
+      <!-- Tip 2 -->
+      <div class="knife-care-card reveal" style="transition-delay: 80ms;">
+        <span class="glyph">❖</span>
+        <h3 class="font-display" style="font-size:1.125rem; font-weight:500; color:var(--foreground); margin:0 0 0.5rem 0;">
+          Honing Bevel
+        </h3>
+        <p style="font-size:0.8125rem; font-weight:300; line-height:1.6; color:var(--muted-foreground); margin:0;">
+          Maintain the 15° to 18° factory angle with a fine whetstone (1000/6000 grit) or ceramic honing rod for effortless razor slicing.
+        </p>
+      </div>
+
+      <!-- Tip 3 -->
+      <div class="knife-care-card reveal" style="transition-delay: 160ms;">
+        <span class="glyph">❖</span>
+        <h3 class="font-display" style="font-size:1.125rem; font-weight:500; color:var(--foreground); margin:0 0 0.5rem 0;">
+          Leather Sheath Care
+        </h3>
+        <p style="font-size:0.8125rem; font-weight:300; line-height:1.6; color:var(--muted-foreground); margin:0;">
+          Condition the full-grain cowhide sheath twice yearly with natural beeswax leather balm to keep moisture out and fibers supple.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Knife Blade Care",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Heirloom Longevity"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "The Damascus Steel Care Protocol"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Section Copy",
+      "default": "High-carbon folded steel rewards simple mindful care with generations of razor sharpness."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Blade Care"
+    }
+  ]
+}
+{% endschema %}
+

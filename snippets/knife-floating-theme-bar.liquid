@@ -1,0 +1,66 @@
+{% doc %}
+  Renders the floating desktop theme bar dock for White Hills Knives.
+  @example
+  {% render 'knife-floating-theme-bar' %}
+{% enddoc %}
+
+<aside aria-label="Theme selection dock" class="knife-floating-theme-dock">
+  <button
+    type="button"
+    data-knife-toggle-light-dark
+    class="knife-icon-btn"
+    title="Toggle Light / Dark Mode"
+    style="border:none; background:rgba(var(--primary-rgb),0.15); color:var(--primary);"
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+    </svg>
+  </button>
+
+  <div style="display:flex; align-items:center; gap:0.25rem;">
+    <button
+      type="button"
+      data-theme-choice="obsidian"
+      title="Obsidian Forge"
+      class="knife-theme-pill"
+      style="padding:0.25rem 0.625rem; font-size:0.6875rem;"
+    >
+      <span class="knife-theme-dot" style="background-color:#e67e22; width:0.5rem; height:0.5rem;"></span>
+      <span>Obsidian</span>
+    </button>
+
+    <button
+      type="button"
+      data-theme-choice="light"
+      title="Daylight Atelier"
+      class="knife-theme-pill"
+      style="padding:0.25rem 0.625rem; font-size:0.6875rem;"
+    >
+      <span class="knife-theme-dot" style="background-color:#93532b; width:0.5rem; height:0.5rem;"></span>
+      <span>Daylight</span>
+    </button>
+
+    <button
+      type="button"
+      data-theme-choice="silver"
+      title="Silver Damascus"
+      class="knife-theme-pill"
+      style="padding:0.25rem 0.625rem; font-size:0.6875rem;"
+    >
+      <span class="knife-theme-dot" style="background-color:#cbd5e1; width:0.5rem; height:0.5rem;"></span>
+      <span>Silver</span>
+    </button>
+
+    <button
+      type="button"
+      data-theme-choice="imperial"
+      title="Imperial Damascus"
+      class="knife-theme-pill"
+      style="padding:0.25rem 0.625rem; font-size:0.6875rem;"
+    >
+      <span class="knife-theme-dot" style="background-color:#d4af37; width:0.5rem; height:0.5rem;"></span>
+      <span>Imperial</span>
+    </button>
+  </div>
+</aside>
+

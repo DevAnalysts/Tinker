@@ -1,0 +1,232 @@
+{% comment %}
+  Section: Knife Atelier Catalog
+  Filterable product showcase with 4-column responsive grid, Inspect modal trigger, and Quick Add.
+{% endcomment %}
+
+{% assign target_collection = section.settings.collection | default: collections['all'] %}
+
+<section id="catalog-section" style="background-color:rgba(var(--primary-rgb),0.02); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding-top:6rem; padding-bottom:6rem;">
+  <div class="knife-container">
+    <div class="knife-section-heading reveal">
+      <p class="eyebrow" style="color:var(--primary);">{{ section.settings.eyebrow | default: 'The Atelier Catalog' }}</p>
+      <h2>{{ section.settings.title | default: 'Most Coveted Hand-Forged Blades' }}</h2>
+      <p>{{ section.settings.copy | default: 'The pieces our collectors reach for first — each billet folded, ground and heat-treated by hand.' }}</p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="knife-metallurgy-tabs reveal" style="margin-bottom:3.5rem;">
+      <button type="button" class="knife-tab-pill is-active" data-knife-catalog-filter="all">All Masterpieces</button>
+      <button type="button" class="knife-tab-pill" data-knife-catalog-filter="pocket">Pocket Knives</button>
+      <button type="button" class="knife-tab-pill" data-knife-catalog-filter="hunting">Hunting & Field</button>
+      <button type="button" class="knife-tab-pill" data-knife-catalog-filter="chef">Chef Knives</button>
+      <button type="button" class="knife-tab-pill" data-knife-catalog-filter="axes">Viking Axes</button>
+    </div>
+
+    <!-- Dynamic Products Grid -->
+    <div class="knife-catalog-grid">
+      {% if target_collection != blank and target_collection.products_count > 0 %}
+        {% for product in target_collection.products limit: section.settings.products_to_show %}
+          {% assign variant = product.first_available_variant | default: product.variants.first %}
+          {% assign short_title = product.title | split: ' - ' | first | split: ' – ' | first %}
+
+          <div
+            class="knife-product-card reveal"
+            data-variant-id="{{ variant.id }}"
+            data-handle="{{ product.handle }}"
+            data-title="{{ product.title | escape }}"
+            data-price="{{ product.price | money_without_currency }}"
+            data-price-formatted="{{ product.price | money }}"
+            data-image="{{ product.featured_image | image_url: width: 700 }}"
+            data-category="{% if product.title contains 'Pocket' or product.title contains 'folding' %}pocket{% elsif product.title contains 'Hunting' or product.title contains 'Skinner' or product.title contains 'Kukri' or product.title contains 'Dagger' %}hunting{% elsif product.title contains 'Chef' or product.title contains 'Kiritsuke' or product.title contains 'VG10' %}chef{% elsif product.title contains 'Axe' or product.title contains 'Hatchet' %}axes{% else %}all{% endif %}"
+          >
+            <!-- Card Media & Hover Actions -->
+            <div class="knife-card-media">
+              {% if product.featured_image != blank %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 700, height: 700, crop: 'center' }}"
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  width="700"
+                  height="700"
+                />
+              {% else %}
+                <div style="aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; background:var(--muted); color:var(--muted-foreground);">
+                  No Image Available
+                </div>
+              {% endif %}
+
+              <span class="knife-badge-forged eyebrow">Hand-Forged</span>
+
+              <!-- Hover Actions Overlay -->
+              <div class="knife-card-actions-overlay">
+                <button
+                  type="button"
+                  data-knife-inspect
+                  class="knife-card-action-btn"
+                  aria-label="Inspect blade"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Inspect</span>
+                </button>
+
+                <button
+                  type="button"
+                  data-knife-quick-add
+                  class="knife-card-action-btn primary"
+                  aria-label="Quick add to order"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span>Quick Add</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card Info -->
+            <div class="knife-card-info">
+              <div class="knife-card-meta-top">
+                <div class="knife-card-stars">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span class="knife-card-hrc">58-60 HRC</span>
+              </div>
+
+              <h3 class="knife-card-title">{{ short_title }}</h3>
+
+              <div class="knife-card-footer">
+                <div>
+                  <p style="font-size:0.625rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted-foreground); margin:0 0 0.125rem 0;">California Dispatch</p>
+                  <span class="knife-card-price">{{ product.price | money }}</span>
+                </div>
+                <span class="eyebrow" style="color:var(--primary); font-size:0.6rem;">Details &rarr;</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Curated Atelier Bestsellers Fallback when products are pending -->
+        {% assign sample_products = "
+          Handmade Damascus folding pocket knife with clip - Raindrop Pattern WH 3542-CP|119.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/DSC8140_1.jpg?v=1790949060&width=700|handmade-damascus-folding-pocket-knife-with-clip-wh-3542-cp|pocket,
+          10-inch Hand Forged Damascus Steel Hunting Knife with Leather Sheath - Gut Hook|109.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/DSC8679_1.jpg?v=1790775200&width=700|10-hand-forged-damascus-steel-hunting-knife-with-leather-sheath-gut-hook-hunting-knife|hunting,
+          VG10 Damascus Chef Knife – 73 Layer Japanese Chef Knife|179.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/ChatGPTImageAug22_2026_11_28_09PM.png?v=1787423312&width=700|vg10-damascus-chef-knife-73-layer-japanese-chef-knife-with-stabilized-wood-handle-leather-sheath|chef,
+          Sato VG10 Copper Damascus Chef Knife – 8 Inch Japanese Kitchen Knife|149.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/WhatsAppImage2026-08-17at08.12.06_2.jpg?v=1787253325&width=700|sato-vg10-copper-damascus-chef-knife-8-inch-japanese-kitchen-knife|chef,
+          Damascus Japanese Kiritsuke Chef Knife - Resin Stabilized Wood Handle|119.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/Sf84f506e5f884870a003a966695c7e02o.webp?v=1766860192&width=700|damascus-japanese-kiritsuke-chef-knife|chef,
+          Custom Hand Forged Damascus Steel Hunting Knife EDC-Fixed blade knife|149.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/H5a987d5299714d79b9681c081bc925b3z.jpg?v=1757370246&width=700|custom-hand-forged-damascus-steel-hunting-knife|hunting,
+          Handmade Forged Steel Axe - Camping Hatchet - Leather Wrap Handle|199.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/IMG_6854copy.jpg?v=1775768606&width=700|handmade-forged-steel-camping-axe|axes,
+          HANDMADE DAMASCUS DAGGER KNIFE - 8.5-inch FULL TANG - Stag Antler Handle|109.00|https://cdn.shopify.com/s/files/1/0549/7366/1432/files/handmade-damascus-steel-dagger-knife-8-5-full-tang-stag-antler-handle-boot-731.webp?v=1713468272&width=700|handmade-damascus-dagger-knife-9-full-tang-knife-stag-handle|hunting
+        " | strip_newlines | split: ',' %}
+
+        {% for item in sample_products %}
+          {% assign parts = item | split: '|' %}
+          {% assign p_title = parts[0] | strip %}
+          {% assign p_price = parts[1] | strip %}
+          {% assign p_image = parts[2] | strip %}
+          {% assign p_handle = parts[3] | strip %}
+          {% assign p_category = parts[4] | strip %}
+
+          <div
+            class="knife-product-card reveal"
+            data-handle="{{ p_handle }}"
+            data-title="{{ p_title | escape }}"
+            data-price="{{ p_price }}"
+            data-price-formatted="${{ p_price }}"
+            data-image="{{ p_image }}"
+            data-category="{{ p_category }}"
+          >
+            <div class="knife-card-media">
+              <img
+                src="{{ p_image }}"
+                alt="{{ p_title | escape }}"
+                loading="lazy"
+                width="700"
+                height="700"
+              />
+              <span class="knife-badge-forged eyebrow">Hand-Forged</span>
+              <div class="knife-card-actions-overlay">
+                <button type="button" data-knife-inspect class="knife-card-action-btn" aria-label="Inspect blade">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary);"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Inspect</span>
+                </button>
+                <button type="button" data-knife-quick-add class="knife-card-action-btn primary" aria-label="Quick add to order">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span>Quick Add</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="knife-card-info">
+              <div class="knife-card-meta-top">
+                <div class="knife-card-stars">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span class="knife-card-hrc">58-60 HRC</span>
+              </div>
+
+              <h3 class="knife-card-title">{{ p_title | split: ' - ' | first }}</h3>
+
+              <div class="knife-card-footer">
+                <div>
+                  <p style="font-size:0.625rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted-foreground); margin:0 0 0.125rem 0;">California Dispatch</p>
+                  <span class="knife-card-price">${{ p_price }}</span>
+                </div>
+                <span class="eyebrow" style="color:var(--primary); font-size:0.6rem;">Details &rarr;</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Knife Atelier Catalog",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Featured Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 12,
+      "label": "Products to show"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Atelier Catalog"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Most Coveted Hand-Forged Blades"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Section Copy",
+      "default": "The pieces our collectors reach for first — each billet folded, ground and heat-treated by hand."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Atelier Catalog"
+    }
+  ]
+}
+{% endschema %}

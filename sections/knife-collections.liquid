@@ -1,0 +1,126 @@
+{% comment %}
+  Section: Knife Collections Showcase
+  Four Halls of the Atelier displaying cards for Pocket Knives, Hunting Knives, Chef Knives, and Axes.
+{% endcomment %}
+
+<section class="knife-container" style="padding-top:6rem; padding-bottom:6rem;">
+  <div class="knife-section-heading reveal">
+    <p class="eyebrow" style="color:var(--primary);">{{ section.settings.eyebrow | default: 'The Collections' }}</p>
+    <h2>{{ section.settings.title | default: 'Four Halls of the Atelier' }}</h2>
+    <p>{{ section.settings.copy | default: 'From EDC pocket carriers to heavy full-tang hunting knives — every piece is forged, acid-etched and honed by hand.' }}</p>
+    <div class="hairline" style="width:6rem; margin:1.5rem auto 0 auto;"></div>
+  </div>
+
+  <div class="knife-categories-grid">
+    <!-- Hall 1: Pocket Knives -->
+    <a href="#catalog-section" class="knife-category-card reveal" data-knife-catalog-filter="pocket">
+      <div class="knife-category-image-wrap">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0549/7366/1432/files/DSC8140_1.jpg?v=1790949060&width=700"
+          alt="Damascus Pocket Knives"
+          loading="lazy"
+          width="700"
+          height="700"
+        />
+        <div class="knife-category-overlay"></div>
+      </div>
+      <div class="knife-category-body">
+        <span class="eyebrow" style="font-size:0.6rem; color:var(--primary);">36 blades</span>
+        <h3>Damascus Pocket Knives</h3>
+        <p>Folding EDC, back-lock & clip carriers</p>
+        <span class="knife-category-link-text">Enter Hall &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Hall 2: Hunting & Field Knives -->
+    <a href="#catalog-section" class="knife-category-card reveal" data-knife-catalog-filter="hunting" style="transition-delay: 80ms;">
+      <div class="knife-category-image-wrap">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0549/7366/1432/files/DSC8679_1.jpg?v=1790775200&width=700"
+          alt="Hunting & Field Knives"
+          loading="lazy"
+          width="700"
+          height="700"
+        />
+        <div class="knife-category-overlay"></div>
+      </div>
+      <div class="knife-category-body">
+        <span class="eyebrow" style="font-size:0.6rem; color:var(--primary);">42 blades</span>
+        <h3>Hunting & Field Knives</h3>
+        <p>Fixed-blade, gut hook & skinner</p>
+        <span class="knife-category-link-text">Enter Hall &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Hall 3: Japanese Chef Knives -->
+    <a href="#catalog-section" class="knife-category-card reveal" data-knife-catalog-filter="chef" style="transition-delay: 160ms;">
+      <div class="knife-category-image-wrap">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0549/7366/1432/files/ChatGPTImageAug22_2026_11_28_09PM.png?v=1787423312&width=700"
+          alt="Japanese Chef Knives"
+          loading="lazy"
+          width="700"
+          height="700"
+        />
+        <div class="knife-category-overlay"></div>
+      </div>
+      <div class="knife-category-body">
+        <span class="eyebrow" style="font-size:0.6rem; color:var(--primary);">24 blades</span>
+        <h3>Japanese Chef Knives</h3>
+        <p>VG-10 Japanese steel & kitchen sets</p>
+        <span class="knife-category-link-text">Enter Hall &rarr;</span>
+      </div>
+    </a>
+
+    <!-- Hall 4: Hand-Forged Axes -->
+    <a href="#catalog-section" class="knife-category-card reveal" data-knife-catalog-filter="axes" style="transition-delay: 240ms;">
+      <div class="knife-category-image-wrap">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0549/7366/1432/files/IMG_6854copy.jpg?v=1775768606&width=700"
+          alt="Hand-Forged Axes"
+          loading="lazy"
+          width="700"
+          height="700"
+        />
+        <div class="knife-category-overlay"></div>
+      </div>
+      <div class="knife-category-body">
+        <span class="eyebrow" style="font-size:0.6rem; color:var(--primary);">19 axes</span>
+        <h3>Hand-Forged Axes</h3>
+        <p>Viking, hatchet & tomahawk</p>
+        <span class="knife-category-link-text">Enter Hall &rarr;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Knife Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Collections"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Four Halls of the Atelier"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Section Copy",
+      "default": "From EDC pocket carriers to heavy full-tang hunting knives — every piece is forged, acid-etched and honed by hand."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Collections"
+    }
+  ]
+}
+{% endschema %}

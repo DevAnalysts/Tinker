@@ -1,0 +1,84 @@
+{% comment %}
+  Section: Knife Footer
+  4-column footer with brand insignia, navigation halls, metallurgy links, support, and socials.
+{% endcomment %}
+
+<footer class="knife-footer">
+  <div class="knife-container">
+    <div class="knife-footer-grid">
+      <!-- Col 1: Brand & Atelier Mission -->
+      <div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div class="knife-brand-flame-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          </div>
+          <div class="knife-brand-text">
+            <span class="knife-brand-title" style="font-size:1.125rem;">WHITE HILLS</span>
+            <span class="knife-brand-subtitle">Damascus Atelier</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.8125rem; font-weight:300; line-height:1.7; color:var(--muted-foreground); margin:1rem 0 0 0; max-width:18rem;">
+          Hand-forged Damascus steel pocket knives, hunting knives and axes. Hand-crafted with genuine stag and exotic hardwoods.
+        </p>
+      </div>
+
+      <!-- Col 2: Halls of Forge -->
+      <div>
+        <h3 class="eyebrow" style="color:var(--foreground); font-size:0.75rem; margin:0 0 1rem 0;">Halls of Forge</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.625rem; font-size:0.8125rem;">
+          <li><a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="pocket">Pocket Knives</a></li>
+          <li><a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="hunting">Hunting Knives</a></li>
+          <li><a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="chef">Chef Knives</a></li>
+          <li><a href="#catalog-section" class="knife-nav-link" data-knife-catalog-filter="axes">Viking Axes</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: The Metallurgy -->
+      <div>
+        <h3 class="eyebrow" style="color:var(--foreground); font-size:0.75rem; margin:0 0 1rem 0;">The Metallurgy</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.625rem; font-size:0.8125rem;">
+          <li><a href="#metallurgy-section" class="knife-nav-link">Raindrop Pattern</a></li>
+          <li><a href="#metallurgy-section" class="knife-nav-link">Twist Damascus</a></li>
+          <li><a href="#metallurgy-section" class="knife-nav-link">Ladder Billet</a></li>
+          <li><a href="#metallurgy-section" class="knife-nav-link">VG-10 Japanese Steel</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Collector Support -->
+      <div>
+        <h3 class="eyebrow" style="color:var(--foreground); font-size:0.75rem; margin:0 0 1rem 0;">Collector Support</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.625rem; font-size:0.8125rem; color:var(--muted-foreground);">
+          <li>Fast California Dispatch</li>
+          <li>30-Day Returns</li>
+          <li>Lifetime Craft Warranty</li>
+          <li>Blade Conditioning</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sub-footer Bottom Bar -->
+    <div style="border-top:1px solid var(--border); padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; font-size:0.75rem; color:var(--muted-foreground);">
+      <p style="margin:0;">&copy; {{ 'now' | date: '%Y' }} White Hills Knives. Handcrafted in California. All rights reserved.</p>
+      <div style="display:flex; gap:1.25rem;">
+        <span class="eyebrow" style="font-size:0.625rem; color:var(--muted-foreground); cursor:pointer;">Facebook</span>
+        <span class="eyebrow" style="font-size:0.625rem; color:var(--muted-foreground); cursor:pointer;">Instagram</span>
+        <span class="eyebrow" style="font-size:0.625rem; color:var(--muted-foreground); cursor:pointer;">YouTube</span>
+        <span class="eyebrow" style="font-size:0.625rem; color:var(--muted-foreground); cursor:pointer;">Pinterest</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Knife Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Knife Footer"
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,121 @@
+{% doc %}
+  Renders the White Hills Knives blade specification inspection modal.
+  Features high-resolution imagery, technical matrix, monogram customizer, and Ajax cart add.
+  @example
+  {% render 'knife-blade-modal' %}
+{% enddoc %}
+
+<div id="knife-blade-modal-overlay" class="knife-modal-overlay">
+  <div class="knife-modal-dialog">
+    <!-- Close Button -->
+    <button
+      type="button"
+      data-knife-close-modal
+      style="position:absolute; top:1rem; right:1rem; z-index:20; width:2.25rem; height:2.25rem; border-radius:9999px; background:var(--background); border:1px solid var(--border); color:var(--foreground); cursor:pointer; display:flex; align-items:center; justify-content:center;"
+      aria-label="Close blade inspector"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="knife-modal-grid">
+      <!-- Media Showcase & Stamp Preview -->
+      <div class="knife-modal-media">
+        <span class="eyebrow" style="position:absolute; top:1.25rem; left:1.25rem; background:color-mix(in srgb, var(--card) 85%, transparent); border:1px solid var(--border); padding:0.25rem 0.625rem; border-radius:9999px; font-size:0.575rem; color:var(--primary); backdrop-filter:blur(4px);">
+          100% Hand-Forged
+        </span>
+
+        <img id="knife-modal-image" src="{{ 'knife-hero-obsidian.jpg' | asset_url }}" alt="Damascus blade" />
+
+        <!-- Bolster Monogram Live Stamp Box -->
+        <div id="knife-modal-monogram-preview" class="knife-monogram-bolster-preview" style="display:none;">
+          <span style="font-size:0.575rem; text-transform:uppercase; letter-spacing:0.18em; color:var(--muted-foreground); display:block;">
+            Complimentary Bolster Engraving Preview
+          </span>
+          <span id="knife-modal-monogram-stamp" class="font-display" style="font-size:1.5rem; font-weight:700; letter-spacing:0.25em; color:var(--primary); margin-top:0.25rem; display:block;">
+          </span>
+        </div>
+      </div>
+
+      <!-- Details, Specs & Purchase -->
+      <div class="knife-modal-content">
+        <div>
+          <!-- Star Rating -->
+          <div style="display:flex; align-items:center; gap:0.5rem; color:var(--primary);">
+            <div style="display:flex; gap:0.125rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span style="font-size:0.75rem; color:var(--muted-foreground);">4.9 · 1,700+ Verified Reviews</span>
+          </div>
+
+          <h2 id="knife-modal-title" class="font-display" style="font-size:1.625rem; font-weight:500; margin:0.75rem 0 0.5rem 0; color:var(--foreground); line-height:1.2;"></h2>
+          <p id="knife-modal-price" class="font-display" style="font-size:1.5rem; font-weight:600; color:var(--primary); margin:0 0 1.25rem 0;"></p>
+
+          <!-- Technical Specs Matrix -->
+          <div style="border-radius:0.75rem; border:1px solid var(--border); background:rgba(var(--primary-rgb),0.03); padding:1rem; font-size:0.75rem;">
+            <div style="display:flex; justify-content:space-between; padding-bottom:0.5rem; border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted-foreground);">Steel Metallurgy</span>
+              <strong style="color:var(--foreground); font-weight:500;">1095 & 15N20 High-Carbon (300+ Folds)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted-foreground);">Hardness Rating</span>
+              <strong style="color:var(--foreground); font-weight:500;">58–60 HRC Vacuum Heat-Treated</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border);">
+              <span style="color:var(--muted-foreground);">Handle Craft</span>
+              <strong style="color:var(--foreground); font-weight:500;">Hand-Carved Stag / Stabilized Hardwood</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding-top:0.5rem;">
+              <span style="color:var(--muted-foreground);">Included Sheath</span>
+              <strong style="color:var(--foreground); font-weight:500;">Heavy Full-Grain Leather with Belt Loop</strong>
+            </div>
+          </div>
+
+          <!-- Monogram Input -->
+          <div style="margin-top:1.25rem;">
+            <label for="knife-modal-monogram-input" style="font-size:0.6875rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted-foreground); display:block;">
+              Complimentary Atelier Monogram (Up to 3 Letters)
+            </label>
+            <input
+              id="knife-modal-monogram-input"
+              type="text"
+              maxlength="3"
+              placeholder="e.g. W.H."
+              style="margin-top:0.375rem; width:100%; border-radius:0.375rem; border:1px solid var(--border); background:var(--background); padding:0.625rem 0.875rem; font-size:0.875rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--foreground); outline:none;"
+            />
+          </div>
+        </div>
+
+        <!-- Action Row -->
+        <div style="margin-top:2rem; padding-top:1.25rem; border-top:1px solid var(--border);">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <!-- Quantity Box -->
+            <div style="display:flex; align-items:center; border:1px solid var(--border); border-radius:0.25rem; background:var(--background);">
+              <button id="knife-modal-qty-minus" type="button" style="padding:0.625rem 0.875rem; background:none; border:none; color:var(--muted-foreground); cursor:pointer; font-weight:bold;">-</button>
+              <span id="knife-modal-qty-val" style="padding:0 0.5rem; font-size:0.875rem; font-weight:600; color:var(--foreground);">1</span>
+              <button id="knife-modal-qty-plus" type="button" style="padding:0.625rem 0.875rem; background:none; border:none; color:var(--muted-foreground); cursor:pointer; font-weight:bold;">+</button>
+            </div>
+
+            <!-- Add to Cart CTA -->
+            <button
+              id="knife-modal-add-btn"
+              type="button"
+              class="knife-btn-primary"
+              style="flex:1; justify-content:center; padding:0.875rem 1.5rem;"
+            >
+              <span id="knife-modal-btn-text">Add to Order</span>
+            </button>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; margin-top:1rem; font-size:0.6875rem; color:var(--muted-foreground);">
+            <span>&#10003; Ships fast from California</span>
+            <span>&#10003; 30-Day Hassle-Free Returns</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

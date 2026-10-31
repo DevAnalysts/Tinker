@@ -28,6 +28,23 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
+    <script>
+      (function(){
+        try {
+          var t = localStorage.getItem('white-hills-atelier-theme') || 'obsidian';
+          if (t === 'nordic') t = 'light';
+          document.documentElement.setAttribute('data-theme', t);
+          if (t === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch(e){}
+      })();
+    </script>
+    {{ 'knife-atelier.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'knife-atelier.js' | asset_url }}" defer></script>
+
     {{ content_for_header }}
   </head>
 
@@ -172,5 +189,9 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    {% render 'knife-blade-modal' %}
+    {% render 'knife-cart-drawer' %}
+    {% render 'knife-search-dialog' %}
+    {% render 'knife-floating-theme-bar' %}
   </body>
 </html>

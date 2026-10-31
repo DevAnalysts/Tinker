@@ -1,0 +1,82 @@
+{% comment %}
+  Section: Knife Announcement Bar
+  Top announcement bar displaying promo discount code, trust points, and currency selector.
+{% endcomment %}
+
+<div class="knife-announcement-bar">
+  <div class="knife-announcement-content">
+    <div class="knife-announcement-items">
+      <span class="knife-announcement-item">
+        <span class="bullet">◆</span>
+        <span>{{ section.settings.promo_text }}</span>
+      </span>
+
+      {% if section.settings.show_reviews %}
+        <span class="knife-announcement-item" style="display:none;" class="md-show">
+          <span class="bullet">◆</span>
+          <span>1,700+ Verified 5-Star Reviews</span>
+        </span>
+      {% endif %}
+
+      {% if section.settings.show_shipping %}
+        <span class="knife-announcement-item">
+          <span class="bullet">◆</span>
+          <span>Dispatched Fast From California, USA</span>
+        </span>
+      {% endif %}
+
+      {% if section.settings.show_returns %}
+        <span class="knife-announcement-item">
+          <span class="bullet">◆</span>
+          <span>30-Day Hassle-Free Returns</span>
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (min-width: 768px) {
+    .knife-announcement-items .md-show {
+      display: flex !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Knife Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "Promotion Text",
+      "default": "15% Off First Piece: ATELIER15"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "Show Verified Reviews Tag",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping",
+      "label": "Show California Dispatch Tag",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_returns",
+      "label": "Show Returns Tag",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
+

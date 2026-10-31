@@ -1,0 +1,83 @@
+{% comment %}
+  Section: Knife Newsletter
+  Join the Collector Ledger newsletter subscription with instant discount reveal.
+{% endcomment %}
+
+<section style="background-color:rgba(var(--primary-rgb),0.03); border-top:1px solid var(--border); padding-top:6rem; padding-bottom:6rem;">
+  <div class="knife-container">
+    <div class="knife-newsletter-wrap reveal">
+      <p class="eyebrow" style="color:var(--primary);">{{ section.settings.eyebrow | default: 'Join the Collector Ledger' }}</p>
+      <h2 class="font-display" style="font-size:2.25rem; font-weight:500; margin:0.75rem 0 1rem 0; color:var(--foreground);">
+        {{ section.settings.title | default: 'First Light on New Forged Drops' }}
+      </h2>
+      <p style="font-size:0.9375rem; font-weight:300; line-height:1.7; color:var(--muted-foreground); margin:0;">
+        {{ section.settings.copy | default: 'Restocks, one-of-a-kind Damascus billets, and VIP collection drops — delivered directly from our California atelier once a month.' }}
+      </p>
+
+      {% form 'customer', class: 'knife-newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter,atelier-ledger">
+
+        {% if form.posted_successfully? %}
+          <div style="width:100%; padding:0.75rem 1rem; border-radius:0.375rem; background:rgba(var(--primary-rgb),0.15); border:1px solid var(--primary); color:var(--primary); font-size:0.875rem; font-weight:600; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+            <span>&#10003;</span>
+            <span>You have been added to the private atelier ledger. Code: <strong>ATELIER15</strong></span>
+          </div>
+        {% else %}
+          <input
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            placeholder="Enter your email address"
+            required
+            aria-label="Email address"
+          />
+          <button
+            type="submit"
+            class="knife-btn-primary"
+            style="padding:0.75rem 1.5rem; border-radius:0.25rem;"
+          >
+            Join Ledger
+          </button>
+        {% endif %}
+
+        {% if form.errors %}
+          <p style="color:var(--destructive); font-size:0.75rem; margin-top:0.5rem;">
+            {{ form.errors | default_errors }}
+          </p>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Knife Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Join the Collector Ledger"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "First Light on New Forged Drops"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Section Copy",
+      "default": "Restocks, one-of-a-kind Damascus billets, and VIP collection drops — delivered directly from our California atelier once a month."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Newsletter"
+    }
+  ]
+}
+{% endschema %}
+
